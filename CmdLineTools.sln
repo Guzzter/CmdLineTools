@@ -7,6 +7,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyFilesMatchingDirSuffix"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncDirNames", "SyncDirNames\SyncDirNames.csproj", "{DD0B5C77-0415-49E4-9FB8-BB31FA3FB598}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub files", "GitHub files", "{9BDE5F70-D82F-4DCD-A74C-7D923A222B0E}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoveEmptyDirectories", "RemoveEmptyDirectories\RemoveEmptyDirectories.csproj", "{0FF0E6CB-FA05-4CE6-9AF4-451B1F6539FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenameRecursively", "RenameRecursively\RenameRecursively.csproj", "{4E820329-1C40-4C55-9A35-812BE0435520}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoveBlackListedFiles", "RemoveBlackListedFiles\RemoveBlackListedFiles.csproj", "{4A4D1323-A30B-472F-8EBE-3E14D39AD82F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{0FA39862-293C-4839-BA20-FE4009102724}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +36,22 @@ Global
 		{DD0B5C77-0415-49E4-9FB8-BB31FA3FB598}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD0B5C77-0415-49E4-9FB8-BB31FA3FB598}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD0B5C77-0415-49E4-9FB8-BB31FA3FB598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FF0E6CB-FA05-4CE6-9AF4-451B1F6539FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF0E6CB-FA05-4CE6-9AF4-451B1F6539FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF0E6CB-FA05-4CE6-9AF4-451B1F6539FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF0E6CB-FA05-4CE6-9AF4-451B1F6539FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E820329-1C40-4C55-9A35-812BE0435520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E820329-1C40-4C55-9A35-812BE0435520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E820329-1C40-4C55-9A35-812BE0435520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E820329-1C40-4C55-9A35-812BE0435520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A4D1323-A30B-472F-8EBE-3E14D39AD82F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A4D1323-A30B-472F-8EBE-3E14D39AD82F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A4D1323-A30B-472F-8EBE-3E14D39AD82F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A4D1323-A30B-472F-8EBE-3E14D39AD82F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FA39862-293C-4839-BA20-FE4009102724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FA39862-293C-4839-BA20-FE4009102724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FA39862-293C-4839-BA20-FE4009102724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FA39862-293C-4839-BA20-FE4009102724}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

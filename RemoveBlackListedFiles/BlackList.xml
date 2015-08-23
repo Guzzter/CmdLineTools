@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <blacklist>
+    <filename>thumbs.db</filename>
+    <filename>enjoy.jpg</filename>
+    <filename>file_id.diz</filename>
+    <filename>bonus.rar</filename>
+    <filename>*.url</filename>
+    <filename>*.gif</filename>
+    <filename>*.htm</filename>
+    <filename>*.html</filename>
+    <filename>*.nfo</filename>
+    <filename>*.sfv</filename>
+    <filename>flyerangel4always*</filename>
+  </blacklist>
+</config>
