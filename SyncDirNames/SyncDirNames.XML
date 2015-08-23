@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SyncDirNames</name>
+    </assembly>
+    <members>
+        <member name="T:SyncDirNames.Program">
+            <summary>
+            Search for directories in [sourcedir] and creates them in [targetdir] when not existing.
+            Does a testrun first and then asks for permission
+            
+            Syntax: SyncDirNames [sourcedir] [targetdir]
+            </summary>
+        </member>
+    </members>
+</doc>

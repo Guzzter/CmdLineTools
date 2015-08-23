@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CopyFilesMatchingDirSuffix</name>
+    </assembly>
+    <members>
+        <member name="T:CopyFilesMatchingDirSuffix.Program">
+            <summary>
+            Search for files in [sourcedir] and tries to determine in which subdir of the [targetdir] it should be copied.
+            Does a testrun first and then asks for permission
+            
+            Example subdir in [targetdir]: 'e:\targetdir\series - South Park (sp.,sp-,south)'
+            Extracted rules: Move every file that
+             - contains 'South Park' or 'SouthPark' or 'South-Park' or 'South_Park' or 'South.Park' 
+             - starts with 'sp.' or 'sp-' or 'south'
+            Note that matches are case-insensitive and that 'series - ' is not mandatory and is not used.
+            
+            Syntax: CopyFilesMatchingDirSuffix [sourcedir] [targetdir]
+            </summary>
+        </member>
+    </members>
+</doc>
