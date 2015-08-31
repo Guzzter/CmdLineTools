@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
 
 namespace Shared
 {
-    public class ConfigRepository
+    public abstract class ConfigRepository
     {
         private string _configFile;
 
@@ -19,28 +20,32 @@ namespace Shared
             }
             else
             {
-                throw new ArgumentException("Could not find config file " + configFile);
+                string localFile = DetectLocalConfigFile(configFile);
+                if (localFile == null)
+                {
+                    throw new ArgumentException("Could not find config file " + configFile);
+                }else
+                {
+                    _configFile = localFile;
+                }
             }
         }
 
-        public IList<string> GetBlackListedFiles()
+        private string DetectLocalConfigFile(string configFilename)
         {
-            string file = GetConfigFileName();
-            XDocument xdoc = XDocument.Load(file);
-            var files = xdoc.Descendants("blacklist").Descendants("filename").Select(p => p.Value).ToList();
+            String filePath = Assembly.GetExecutingAssembly().CodeBase;
+            filePath = filePath.Replace("file:///", String.Empty);
+            filePath = filePath.Replace("/", "\\");
 
-            return files;
+            string localFile = string.Format("{0}\\{1}", Path.GetDirectoryName(filePath), Path.GetFileName(configFilename));
+            if (File.Exists(localFile))
+            {
+                return localFile;
+            }
+            return null;
         }
 
-        /*
-        public void Save(string recipe)
-        {
-            string fileName = GetRecipeFileName();
-            File.WriteAllText(fileName, recipe);
-        }
-        */
-
-        private string GetConfigFileName()
+        protected string GetConfigFileName()
         {
             return Path.Combine("", _configFile);
         }

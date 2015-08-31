@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SyncConfig>
+  <defaults 
+    direction="OneWay"
+    operation="move"
+    resolution="dontOverwrite">
+  </defaults>
+  <groups>
+    <filegroup direction="TwoWay" operation="copy" resolution="overwrite">
+      <filepattern>*.txt</filepattern>
+      <from>c:\test_source\</from>
+      <to>c:\test_target\</to>
+    </filegroup>
+    <filegroup direction="OneWay" resolution="overwrite">
+      <filepattern>*.pdf</filepattern>
+      <from>c:\test_source\</from>
+      <to>c:\test_target\</to>
+    </filegroup>
+  </groups>
+</SyncConfig>

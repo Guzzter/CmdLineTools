@@ -53,7 +53,7 @@ namespace RemoveBlackListedFiles
 
         private static int RemovedBlackListedFiles(RemoveBlackListedFilesOptions options)
         {
-            var blackListedFiles = new ConfigRepository(options.ConfigFile).GetBlackListedFiles();
+            var blackListedFiles = new BlackListConfig(options.ConfigFile).GetBlackListedFiles();
 
             foreach (var file in blackListedFiles)
             {

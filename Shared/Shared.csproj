@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumHelper.cs" />
     <Compile Include="Options\BaseOptions.cs" />
     <Compile Include="Options\RenamePreFixOrPostFixOrStripOptions.cs" />
     <Compile Include="Options\RemoveEmptyDirectoriesOptions.cs" />
@@ -51,6 +53,7 @@
     <Compile Include="LoggingHelpers.cs" />
     <Compile Include="Options\RemoveBlackListedFilesOptions.cs" />
     <Compile Include="Options\RenameRecursivelyOptions.cs" />
+    <Compile Include="ParseHelpers.cs" />
     <Compile Include="RootOfEvil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
