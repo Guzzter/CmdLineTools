@@ -14,6 +14,11 @@ Note that matches are case-insensitive and that 'series - ' is not mandatory and
 
 Syntax: CopyFilesMatchingDirSuffix [sourcedir] [targetdir]
 
+#### FileSyncher
+Util for synching files easily based on a configuration file.
+Copies or move files from one directory to another. Also two-way synch copying is possible.
+It is possible to keep existing files or to overwrite them with the new file.
+
 #### RemoveBlackListedFiles
 Removes all files matching a certain pattern. Patterns are managed in a XML file (see BlackList.xml) 
 Options:
