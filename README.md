@@ -19,6 +19,12 @@ Util for synching files easily based on a configuration file.
 Copies or move files from one directory to another. Also two-way synch copying is possible.
 It is possible to keep existing files or to overwrite them with the new file.
 
+#### ReIndentFiles
+Utility to convert a raw unformatted XML into a nice indented formatted XML file that humans can read
+Also works for .json files.
+
+Usage: ReindentFile <sourcefile.[xml|json]> <destinationfile.[xml|json]>
+
 #### RemoveBlackListedFiles
 Removes all files matching a certain pattern. Patterns are managed in a XML file (see BlackList.xml) 
 Options:
