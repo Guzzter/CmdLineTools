@@ -76,7 +76,7 @@ namespace VideoThumbnailer
                 p.StartInfo.FileName = exePath;
                 p.StartInfo.Arguments = parameters;
                 p.Start();
-                p.WaitForExit();
+                p.WaitForExit(1000);
 
                 result = p.StandardOutput.ReadToEnd();
             }
@@ -244,23 +244,21 @@ namespace VideoThumbnailer
             string cmdParams = String.Format("-hide_banner -ss {0} -i {1} -r 1 -t 1 -f image2 {2}", atPosition, filename, tmpFileName);
 
             Bitmap result = null;
-            try
+
+            //Console.WriteLine(FFMPEG_EXE_PATH + " " + cmdParams);
+
+            // Execute command to let FFMPEG extract the frame
+            Execute(FFMPEG_EXE_PATH, cmdParams);
+
+            // If the file was created, read the image
+            if (File.Exists(tmpFileName))
             {
-
-
-                // Execute command to let FFMPEG extract the frame
-                Execute(FFMPEG_EXE_PATH, cmdParams);
-
-                // If the file was created, read the image
-                if (File.Exists(tmpFileName))
-                {
-                    // Do not open the Bitmap directly from the file, because then the file is locked until the Bitmap is disposed!
-                    byte[] fileData = File.ReadAllBytes(tmpFileName);
-                    result = new Bitmap(new MemoryStream(fileData));
-                    File.Delete(tmpFileName);
-                }
+                // Do not open the Bitmap directly from the file, because then the file is locked until the Bitmap is disposed!
+                byte[] fileData = File.ReadAllBytes(tmpFileName);
+                result = new Bitmap(new MemoryStream(fileData));
+                File.Delete(tmpFileName);
             }
-            catch { }
+
 
             return result;
         }

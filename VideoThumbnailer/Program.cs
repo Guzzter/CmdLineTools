@@ -84,8 +84,16 @@ namespace VideoThumbnailer
             while (pos < length)
             {
                 TimeSpan position = TimeSpan.FromSeconds(pos);
-                Bitmap bmp = info.GetSnapshot(position, ffmpeg.ffmpeg_path);
-                snapshots[position] = bmp;
+                try
+                {
+                    Bitmap bmp = info.GetSnapshot(position, ffmpeg.ffmpeg_path);
+                    snapshots[position] = bmp;
+                }
+                catch (Exception ex)
+                {
+                    string msg = ex.Message;
+                }
+
                 pos += step;
             }
 
@@ -122,6 +130,8 @@ namespace VideoThumbnailer
 
         private static void WriteSnapshotsToFile(Dictionary<TimeSpan, Bitmap> snapshots, string orignalVideoFileName, int quality)
         {
+
+
             int snapNr = 0;
             System.Drawing.Imaging.EncoderParameters parameters = new System.Drawing.Imaging.EncoderParameters(1);
             parameters.Param[0] = new System.Drawing.Imaging.EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality);
@@ -138,6 +148,7 @@ namespace VideoThumbnailer
                     Console.WriteLine("Saved " + Path.GetFileName(snapFile));
                 }
             }
+            
         }
 
     }
