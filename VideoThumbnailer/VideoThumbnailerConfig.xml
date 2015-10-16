@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VideoThumbnailerConfig>
+  <ffmpeg>
+    <ffmpeg_path>e:\ffmpeg\ffmpeg.exe</ffmpeg_path>
+    <ffprobe_path>e:\ffmpeg\ffprobe.exe</ffprobe_path>
+  </ffmpeg>
+  <settings
+    thumbcount="6"
+    thumbquality="80"
+    info_json_generation="false"
+    resursive="true">
+  </settings>
+  <paths>
+    <dir resursive="false">c:\myvideofolder\</dir>
+  </paths>
+</VideoThumbnailerConfig>

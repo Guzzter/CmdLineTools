@@ -58,3 +58,6 @@ Does a testrun first and then asks for permission
 
 Syntax: SyncDirNames [sourcedir] [targetdir]
 
+#### VideoThumbnailer
+Utility to scan a directory for video files and create multiple screenshots for it.
+Makes use of mmpeg which can be configured in the config file.
