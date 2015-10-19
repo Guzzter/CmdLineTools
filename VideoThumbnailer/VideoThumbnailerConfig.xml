@@ -6,11 +6,15 @@
   </ffmpeg>
   <settings
     thumbcount="6"
-    thumbquality="80"
+    thumbquality="75"
     info_json_generation="false"
+    subdir="zzzVidPreviews"
+    remove_old_first="true"
+    first_thumbnail_sec ="10"
+    last_thumbnail_sec ="10"
     resursive="true">
   </settings>
   <paths>
-    <dir resursive="false">c:\myvideofolder\</dir>
+    <dir resursive="false" remove_old_first="true">c:\myvideofolder\</dir>
   </paths>
 </VideoThumbnailerConfig>
