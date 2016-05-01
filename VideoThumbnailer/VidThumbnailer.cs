@@ -13,7 +13,7 @@ namespace VideoThumbnailer
 {
     class VidThumbnailer
     {
-        private static string[] wantedFileExts = new[] { ".wmv", ".avi", ".mp4", ".mov", ".flv", ".mkv", ".m4v" };
+        public static string[] wantedFileExts = new[] { ".wmv", ".avi", ".mp4", ".mov", ".flv", ".mkv", ".m4v" };
 
         private VideoThumbnailerConfig conf;
         public VidThumbnailer(VideoThumbnailerConfig config)
@@ -79,41 +79,51 @@ namespace VideoThumbnailer
 
         private static void GenerateForVid(string videoFile, VideoThumbnailerConfig config, bool doRemoveFirst)
         {
-            FFmpegMediaInfo info = new FFmpegMediaInfo(videoFile, config.ffmpeg.ffprobe_path);
 
-            if (config.settings.info_json_generation)
-                WriteVideoInfoToFile(info, videoFile);
+            // First check if thumbs are there
+            var filePattern = ExtractFileNameForSave(Path.GetFileName(videoFile), "") + "*" + DEFAULT_THUMB_EXT;
+            var fld = new DirectoryInfo(Path.GetDirectoryName(videoFile));
 
-            //Take 10 snapshots
-            double length = info.Duration.TotalSeconds;
-            double step = length / config.settings.thumbcount;
-            double pos = config.settings.first_thumbnail_sec; // set first thumb
-            Dictionary<TimeSpan, Bitmap> snapshots = new Dictionary<TimeSpan, Bitmap>();
-            while (pos < length)
+            // Do we need to clean first? (a.k.a. regenerate always?)
+            if (fld.GetFiles(filePattern).Length == 0 || doRemoveFirst)
             {
-                TimeSpan position = TimeSpan.FromSeconds(pos);
-                try
+                FFmpegMediaInfo info = new FFmpegMediaInfo(videoFile, config.ffmpeg.ffprobe_path);
+
+                if (config.settings.info_json_generation)
+                    WriteVideoInfoToFile(info, videoFile);
+
+                //Take video snapshots (config: thumbcount)
+                double length = info.Duration.TotalSeconds;
+                double step = length/config.settings.thumbcount;
+                double pos = config.settings.first_thumbnail_sec; // set first thumb
+                Dictionary<TimeSpan, Bitmap> snapshots = new Dictionary<TimeSpan, Bitmap>();
+                while (pos < length)
                 {
-                    if (pos + step > length)
+                    TimeSpan position = TimeSpan.FromSeconds(pos);
+                    try
                     {
-                        //it is the last
-                        position = TimeSpan.FromSeconds(pos - config.settings.last_thumbnail_sec);
+                        if (pos + step > length)
+                        {
+                            //it is the last
+                            position = TimeSpan.FromSeconds(pos - config.settings.last_thumbnail_sec);
+                        }
+
+                        Bitmap bmp = info.GetSnapshot(position, config.ffmpeg.ffmpeg_path);
+                        snapshots[position] = bmp;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        string msg = ex.Message;
                     }
 
-                    Bitmap bmp = info.GetSnapshot(position, config.ffmpeg.ffmpeg_path);
-                    snapshots[position] = bmp;
-
-                }
-                catch (Exception ex)
-                {
-                    string msg = ex.Message;
+                    pos += step;
                 }
 
-                pos += step;
+                //Write snapshots to file
+                WriteSnapshotsToFile(snapshots, videoFile, config.settings.subdir, config.settings.thumbquality,
+                    doRemoveFirst);
             }
-
-            //Write snapshots to file
-            WriteSnapshotsToFile(snapshots, videoFile, config.settings.subdir, config.settings.thumbquality, doRemoveFirst);
         }
 
 

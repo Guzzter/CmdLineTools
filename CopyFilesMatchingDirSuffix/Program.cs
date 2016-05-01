@@ -13,20 +13,20 @@ namespace CopyFilesMatchingDirSuffix
     /// <summary>
     /// Search for files in [sourcedir] and tries to determine in which subdir of the [targetdir] it should be copied.
     /// Does a testrun first and then asks for permission
-    /// 
+    ///
     /// Example subdir in [targetdir]: 'e:\targetdir\series - South Park (sp.,sp-,south)'
     /// Extracted rules: Move every file that
-    ///  - contains 'South Park' or 'SouthPark' or 'South-Park' or 'South_Park' or 'South.Park' 
+    ///  - contains 'South Park' or 'SouthPark' or 'South-Park' or 'South_Park' or 'South.Park'
     ///  - starts with 'sp.' or 'sp-' or 'south'
     /// Note that matches are case-insensitive and that 'series - ' is not mandatory and is not used.
-    /// 
+    ///
     /// Syntax: CopyFilesMatchingDirSuffix [sourcedir] [targetdir]
     /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
-            string[] test = new[] { @"c:\temp\sourcedir", @"t:\temp\targetdir" };
+            string[] test = { @"c:\temp\sourcedir", @"t:\temp\targetdir" };
             test = args;
             if (test.Length != 2)
             {
@@ -86,7 +86,7 @@ namespace CopyFilesMatchingDirSuffix
                         break;
                     }
                 }
-               
+
                 if (!string.IsNullOrWhiteSpace(foundKey) && mapping.Keys.Contains<string>(foundKey))
                 {
                     amountOfFilesFound++;
@@ -100,7 +100,7 @@ namespace CopyFilesMatchingDirSuffix
                         Console.WriteLine(" " + targetFile);
                         Console.WriteLine();
                     }
-                    else 
+                    else
                     {
                         Console.WriteLine("Copy {0}: {1}", amountOfFilesFound, Path.GetFileName(targetFile));
                         if (File.Exists(targetFile))
@@ -235,7 +235,6 @@ namespace CopyFilesMatchingDirSuffix
                 }catch(Exception ex)
                 {
                     throw new Exception(string.Format("Could not parse {0}", metafile), ex);
-                    
                 }
 
             }
